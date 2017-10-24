@@ -25,12 +25,12 @@ begin
                     RAM(conv_integer(aluAddress)) <= cRD;
 					 
                 end if;
-                datatomem <= RAM(conv_integer(aluAddress)) ;
+--                datatomem <= RAM(conv_integer(aluAddress)) ;
             --end if;
         --end if;
     end process;
 	 
-	 --datatomem<=RAM(conv_integer(aluAddress));
+	 datatomem<=RAM(conv_integer(aluAddress));
 	
 end syn;
 
