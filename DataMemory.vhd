@@ -22,15 +22,20 @@ begin
         --if CLK'event and CLK = '1' then
             --if EN = '1' then
                 if wrenmem = '1' then
+						
                     RAM(conv_integer(aluAddress)) <= cRD;
-					 
+						
                 end if;
---                datatomem <= RAM(conv_integer(aluAddress)) ;
+					 if (aluAddress >= "00000000000000000000000000000000" and aluAddress < "00000000000000000000000001000000") then
+						datatomem <= RAM(conv_integer(aluAddress)) ;
+					 else
+						datatomem <= RAM(0) ;
+					 end if;
             --end if;
         --end if;
     end process;
 	 
-	 datatomem<=RAM(conv_integer(aluAddress));
+--	 datatomem<=RAM(conv_integer(aluAddress));
 	
 end syn;
 

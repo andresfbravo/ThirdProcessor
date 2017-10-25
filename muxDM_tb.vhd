@@ -15,7 +15,7 @@ ARCHITECTURE behavior OF muxDM_tb IS
          datatomem : IN  std_logic_vector(31 downto 0);
          aluresult : IN  std_logic_vector(31 downto 0);
          pc : IN  std_logic_vector(31 downto 0);
-         pcsource : IN  std_logic_vector(1 downto 0);
+         RFsource : IN  std_logic_vector(1 downto 0);
          DtoWrite : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
@@ -25,7 +25,7 @@ ARCHITECTURE behavior OF muxDM_tb IS
    signal datatomem : std_logic_vector(31 downto 0) := (others => '0');
    signal aluresult : std_logic_vector(31 downto 0) := (others => '0');
    signal pc : std_logic_vector(31 downto 0) := (others => '0');
-   signal pcsource : std_logic_vector(1 downto 0) := (others => '0');
+   signal RFsource : std_logic_vector(1 downto 0) := (others => '0');
 
  	--Outputs
    signal DtoWrite : std_logic_vector(31 downto 0);
@@ -41,7 +41,7 @@ BEGIN
           datatomem => datatomem,
           aluresult => aluresult,
           pc => pc,
-          pcsource => pcsource,
+          RFsource => RFsource,
           DtoWrite => DtoWrite
         );
 
@@ -52,18 +52,18 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-		    datatomem <="00000000000000000000000000001";
-          aluresult <="00000000000000000000000000010";
-          pc <="00000000000000000000000000011";
-			 pcsource <="00";
+		    datatomem <="00000000000000000000000000000001";
+          aluresult <="00000000000000000000000000000010";
+          pc <="00000000000000000000000000000011";
+			 RFsource <="00";
       wait for 10 ns;
-			 pcsource <="01";
+			 RFsource <="01";
 		wait for 10 ns;
-			 pcsource <="10";
+			 RFsource <="10";
 		wait for 10 ns;
-			 pcsource <="11";
+			 RFsource <="11";
 		wait for 10 ns;
-			 pcsource <="00";
+			 RFsource <="00";
 
 
       -- insert stimulus here 
